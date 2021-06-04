@@ -1,6 +1,7 @@
 package main
 
 import (
+	"isso0424/oroka-discord/handler"
 	"os"
 	"os/signal"
 	"syscall"
@@ -10,10 +11,11 @@ import (
 
 func main() {
 	discord, err := discordgo.New()
-	discord.Token = ""
+	discord.Token = os.Getenv("TOKEN")
 	if err != nil {
 		panic(err)
 	}
+	discord.AddHandler(handler.OnMessageHandler)
 
 	err = discord.Open()
 	if err != nil {
