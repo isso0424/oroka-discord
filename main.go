@@ -11,7 +11,7 @@ import (
 
 func main() {
 	discord, err := discordgo.New()
-	discord.Token = os.Getenv("TOKEN")
+	discord.Token = "Bot " + os.Getenv("TOKEN")
 	if err != nil {
 		panic(err)
 	}

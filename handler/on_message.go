@@ -1,6 +1,10 @@
 package handler
 
-import "github.com/bwmarrin/discordgo"
+import (
+	"fmt"
+
+	"github.com/bwmarrin/discordgo"
+)
 
 func createEmojiList(message string) {
 }
@@ -11,7 +15,16 @@ func OnMessageHandler(session *discordgo.Session, event *discordgo.MessageCreate
 	}
 
 	if event.Content == "愚か" {
-		session.MessageReactionAdd(event.ChannelID, event.Message.ID, "848915057475715104")
-		session.MessageReactionAdd(event.ChannelID, event.Message.ID, "848915069571301396")
+		err := session.MessageReactionAdd(event.ChannelID, event.Message.ID, ":oro:848915057475715104")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		err = session.MessageReactionAdd(event.ChannelID, event.Message.ID, ":ka:848915069571301396")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
 	}
 }
