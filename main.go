@@ -1,6 +1,7 @@
 package main
 
 import (
+	"isso0424/oroka-discord/config"
 	"isso0424/oroka-discord/handler"
 	"os"
 	"os/signal"
@@ -12,6 +13,7 @@ import (
 
 func main() {
 	err := godotenv.Load()
+	config.Setup("patterns.json")
 	discord, err := discordgo.New()
 	discord.Token = "Bot " + os.Getenv("TOKEN")
 	if err != nil {
