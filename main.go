@@ -7,9 +7,11 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	err := godotenv.Load()
 	discord, err := discordgo.New()
 	discord.Token = "Bot " + os.Getenv("TOKEN")
 	if err != nil {
